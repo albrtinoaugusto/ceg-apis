@@ -1,5 +1,5 @@
 
-package api.mpesa;
+package api.models;
 
 /**
  *

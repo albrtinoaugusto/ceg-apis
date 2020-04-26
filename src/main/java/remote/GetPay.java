@@ -1,15 +1,15 @@
 package remote;
 
-import api.mpesa.Entity;
+import api.models.Entity;
 import api.mpesa.MPesaPayment;
-import api.mpesa.Payment;
+import api.models.Payment;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -136,7 +136,7 @@ public class GetPay extends HttpServlet
             //4 Error 
             jSONObject = new JSONObject();
             jSONObject.put("mensagem", "Lamentamos! Mas, ocorreu um erro ao se conectar ao GetWay");
-            response.getWriter().write(jSONObject.toString());
+            response.getWriter().write(jSONObject.toJSONString());
         }
         else
         {
@@ -145,21 +145,21 @@ public class GetPay extends HttpServlet
                 jSONObject = new JSONObject();
                 jSONObject.put("mensagem", "Pagamento efectuado com sucesso!");
                 jSONObject.put("code", "201");
-                response.getWriter().write(jSONObject.toString());
+                response.getWriter().write(jSONObject.toJSONString());
             }
             else if (results[0].equals("422"))
             {
                 jSONObject = new JSONObject();
                 jSONObject.put("mensagem", "Saldo insufciente.");
                 jSONObject.put("code", "422");
-                response.getWriter().write(jSONObject.toString());
+                response.getWriter().write(jSONObject.toJSONString());
             }
             else
             {
                 jSONObject = new JSONObject();
                 jSONObject.put("mensagem", "Lamentamos! Mas, ocorreu um erro ao debitar... Verifique os dados informados na requisição.");
                 jSONObject.put("code", results[0]);
-                response.getWriter().write(jSONObject.toString());
+                response.getWriter().write(jSONObject.toJSONString());
             }
         }
     }

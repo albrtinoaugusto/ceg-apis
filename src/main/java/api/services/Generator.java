@@ -1,4 +1,4 @@
-package api.mpesa;
+package api.services;
 
 import api.date.DateTime;
 

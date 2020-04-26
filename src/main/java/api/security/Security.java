@@ -42,9 +42,9 @@ public class Security
             cipher = Cipher.getInstance(myEncryptionScheme);
             key = skf.generateSecret(ks);
         } 
-        catch (UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidKeySpecException ex) 
+        catch (UnsupportedEncodingException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException ex) 
         {
-            
+            System.out.println("Error: " + ex);
         }
     }
 

@@ -1,5 +1,7 @@
 
-package api.mpesa;
+package api.models;
+
+import api.services.Generator;
 
 /**
  *
