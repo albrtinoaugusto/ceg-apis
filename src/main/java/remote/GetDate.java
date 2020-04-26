@@ -20,7 +20,9 @@ public class GetDate extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-
+        
+        setAccessControlHeaders(response);
+        
         String type = request.getParameter("type");
         getDate(type, request, response);
     }
@@ -34,6 +36,22 @@ public class GetDate extends HttpServlet
         getDate(type, request, response);
     }
 
+    
+    //for Preflight
+    @Override
+    protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        setAccessControlHeaders(response);
+        response.setStatus(HttpServletResponse.SC_OK);
+    }
+
+    private void setAccessControlHeaders(HttpServletResponse response)
+    {
+        response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+        response.setHeader("Access-Control-Allow-Methods", "GET");
+    }
+    
+    
     private void getDate(String type, HttpServletRequest request, HttpServletResponse response) throws IOException
     {
 
@@ -71,6 +89,8 @@ public class GetDate extends HttpServlet
             }
         }
     }
+
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
