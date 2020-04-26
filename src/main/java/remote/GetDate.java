@@ -1,6 +1,7 @@
 package remote;
 
 import api.date.DateTime;
+import api.services.Constants;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +22,7 @@ public class GetDate extends HttpServlet
     {
         response.setContentType("text/html;charset=UTF-8");
         
+        //Configs Requests Controlers
         setAccessControlHeaders(response);
         
         String type = request.getParameter("type");
@@ -47,7 +49,7 @@ public class GetDate extends HttpServlet
 
     private void setAccessControlHeaders(HttpServletResponse response)
     {
-        response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+        response.setHeader("Access-Control-Allow-Origin", Constants.ORIGEN_1);
         response.setHeader("Access-Control-Allow-Methods", "GET");
     }
     

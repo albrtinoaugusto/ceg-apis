@@ -3,6 +3,7 @@ package remote;
 import api.models.Entity;
 import api.mpesa.MPesaPayment;
 import api.models.Payment;
+import api.services.Constants;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,10 @@ public class GetPay extends HttpServlet
     {
         response.setContentType("text/html;charset=UTF-8");
 
+        //Configs Requests Controlers
+        setAccessControlHeaders(response);
+        
+        
         String money = request.getParameter("money");
         String reference = request.getParameter("reference");
         String customerNumber = request.getParameter("cnumber");
@@ -123,6 +128,22 @@ public class GetPay extends HttpServlet
         gePay(payment, entity, request, response);
     }
 
+    
+    //for Preflight
+    @Override
+    protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        setAccessControlHeaders(response);
+        response.setStatus(HttpServletResponse.SC_OK);
+    }
+
+    private void setAccessControlHeaders(HttpServletResponse response)
+    {
+        response.setHeader("Access-Control-Allow-Origin", Constants.ORIGEN_1);
+        response.setHeader("Access-Control-Allow-Methods", "GET");
+    }
+    
+    
     private void gePay(Payment payment, Entity entity, HttpServletRequest request, HttpServletResponse response) throws IOException
     {
 
