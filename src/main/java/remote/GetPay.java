@@ -20,108 +20,23 @@ import org.json.simple.JSONObject;
 public class GetPay extends HttpServlet
 {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        response.setContentType("text/html;charset=UTF-8");
-
-        //Configs Requests Controlers
-        setAccessControlHeaders(response);
-        
-        
-        String money = request.getParameter("money");
-        String reference = request.getParameter("reference");
-        String customerNumber = request.getParameter("cnumber");
-
-        if (money != null)
-        {
-            money = "";
-        }
-
-        if (reference != null)
-        {
-            reference = "";
-        }
-
-        if (customerNumber != null)
-        {
-            customerNumber = "";
-        }
-
-        
-
-        String apiKey = request.getParameter("apikey");
-        String publicKey = request.getParameter("publicKey");
-        String providerCode = request.getParameter("providercode");
-
-        if (apiKey != null)
-        {
-            apiKey = "";
-        }
-
-        if (publicKey != null)
-        {
-            publicKey = "";
-        }
-
-        if (providerCode != null)
-        {
-            providerCode = "";
-        }
-
-        
-        Payment payment = new Payment(reference, money, customerNumber);
-        Entity entity = new Entity(apiKey, publicKey, providerCode);
-
-        gePay(payment, entity, request, response);
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
 
+        //Configs Requests Controlers
+        setAccessControlHeaders(response);
+        
         String money = request.getParameter("money");
         String reference = request.getParameter("reference");
         String customerNumber = request.getParameter("cnumber");
-
-        if (money != null)
-        {
-            money = "";
-        }
-
-        if (reference != null)
-        {
-            reference = "";
-        }
-
-        if (customerNumber != null)
-        {
-            customerNumber = "";
-        }
-
         
-
         String apiKey = request.getParameter("apikey");
         String publicKey = request.getParameter("publicKey");
         String providerCode = request.getParameter("providercode");
-
-        if (apiKey != null)
-        {
-            apiKey = "";
-        }
-
-        if (publicKey != null)
-        {
-            publicKey = "";
-        }
-
-        if (providerCode != null)
-        {
-            providerCode = "";
-        }
-
-        
+   
         Payment payment = new Payment(reference, money, customerNumber);
         Entity entity = new Entity(apiKey, publicKey, providerCode);
 
@@ -137,10 +52,11 @@ public class GetPay extends HttpServlet
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    
     private void setAccessControlHeaders(HttpServletResponse response)
     {
-        response.setHeader("Access-Control-Allow-Origin", Constants.ORIGEN_1);
-        response.setHeader("Access-Control-Allow-Methods", "GET");
+        response.setHeader("Access-Control-Allow-Origin", Constants.ALLOW_ALL);
+        response.setHeader("Access-Control-Allow-Methods", "POST");
     }
     
     

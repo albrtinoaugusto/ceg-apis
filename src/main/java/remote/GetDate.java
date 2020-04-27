@@ -29,15 +29,6 @@ public class GetDate extends HttpServlet
         getDate(type, request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        response.setContentType("text/html;charset=UTF-8");
-
-        String type = request.getParameter("type");
-        getDate(type, request, response);
-    }
-
     
     //for Preflight
     @Override
@@ -47,9 +38,10 @@ public class GetDate extends HttpServlet
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    
     private void setAccessControlHeaders(HttpServletResponse response)
     {
-        response.setHeader("Access-Control-Allow-Origin", Constants.ORIGEN_1);
+        response.setHeader("Access-Control-Allow-Origin", Constants.ALLOW_ALL);
         response.setHeader("Access-Control-Allow-Methods", "GET");
     }
     
