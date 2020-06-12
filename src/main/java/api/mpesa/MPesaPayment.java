@@ -102,7 +102,7 @@ public class MPesaPayment
     public static void main(String[] args)
     {
         Payment p = new Payment("DGDSRHRD", "20", "848131298");
-        System.out.println(new MPesaPayment(p, null).doPayment()[0]);
+        System.out.println(new MPesaPayment(p, null).doPayment()[0] + " - " + new MPesaPayment(p, null).doPayment()[0] + " - " + new MPesaPayment(p, null).doPayment()[0]);
     }
 
 }

@@ -72,7 +72,7 @@ public class GetPay extends HttpServlet
         {
             //4 Error 
             jSONObject = new JSONObject();
-            jSONObject.put("mensagem", "Lamentamos! Mas, ocorreu um erro ao se conectar ao GetWay");
+            jSONObject.put("mensagem", "Lamentamos mas, ocorreu um erro ao se conectar ao Getway");
             response.getWriter().write(jSONObject.toJSONString());
         }
         else

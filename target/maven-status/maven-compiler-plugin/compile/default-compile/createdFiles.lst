@@ -16,6 +16,7 @@ api\sdk\APIResponse.class
 remote\GetDate.class
 api\sdk\APIRequest$1.class
 api\sdk\APIContext$1.class
+remote\A.class
 api\sdk\APIMethodType.class
 api\sdk\APIContext.class
 api\services\GetBearer.class
