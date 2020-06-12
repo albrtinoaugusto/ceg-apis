@@ -39,15 +39,6 @@
             <type>jar</type>
         </dependency>
         
-        <!-- Depencia de Test -->
-        <dependency>
-            <groupId>swing-animations</groupId>
-            <artifactId>swing-animations</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/swing-animations.jar</systemPath>
-            <type>jar</type>
-        </dependency>
     </dependencies>
 
     <build>

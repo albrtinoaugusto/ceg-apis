@@ -1,7 +1,6 @@
 package remote;
 
 import api.models.Entity;
-import api.mpesa.MPesaPayment;
 import api.models.Payment;
 import api.services.Constants;
 import java.io.IOException;
@@ -63,42 +62,42 @@ public class GetPay extends HttpServlet
     private void gePay(Payment payment, Entity entity, HttpServletRequest request, HttpServletResponse response) throws IOException
     {
 
-        MPesaPayment mPesaPayment = new MPesaPayment(payment, entity);
-        String[] results = mPesaPayment.doPayment();
-        
-        JSONObject jSONObject;
-        
-        if (results[0].equals(""))
-        {
-            //4 Error 
-            jSONObject = new JSONObject();
-            jSONObject.put("mensagem", "Lamentamos mas, ocorreu um erro ao se conectar ao Getway");
-            response.getWriter().write(jSONObject.toJSONString());
-        }
-        else
-        {
-            if (results[0].equals("201"))
-            {
-                jSONObject = new JSONObject();
-                jSONObject.put("mensagem", "Pagamento efectuado com sucesso!");
-                jSONObject.put("code", "201");
-                response.getWriter().write(jSONObject.toJSONString());
-            }
-            else if (results[0].equals("422"))
-            {
-                jSONObject = new JSONObject();
-                jSONObject.put("mensagem", "Saldo insufciente.");
-                jSONObject.put("code", "422");
-                response.getWriter().write(jSONObject.toJSONString());
-            }
-            else
-            {
-                jSONObject = new JSONObject();
-                jSONObject.put("mensagem", "Lamentamos! Mas, ocorreu um erro ao debitar... Verifique os dados informados na requisição.");
-                jSONObject.put("code", results[0]);
-                response.getWriter().write(jSONObject.toJSONString());
-            }
-        }
+//        MPesaPayment mPesaPayment = new MPesaPayment(payment, entity);
+//        String[] results = mPesaPayment.doPayment();
+//        
+//        JSONObject jSONObject;
+//        
+//        if (results[0].equals(""))
+//        {
+//            //4 Error 
+//            jSONObject = new JSONObject();
+//            jSONObject.put("mensagem", "Lamentamos mas, ocorreu um erro ao se conectar ao Getway");
+//            response.getWriter().write(jSONObject.toJSONString());
+//        }
+//        else
+//        {
+//            if (results[0].equals("201"))
+//            {
+//                jSONObject = new JSONObject();
+//                jSONObject.put("mensagem", "Pagamento efectuado com sucesso!");
+//                jSONObject.put("code", "201");
+//                response.getWriter().write(jSONObject.toJSONString());
+//            }
+//            else if (results[0].equals("422"))
+//            {
+//                jSONObject = new JSONObject();
+//                jSONObject.put("mensagem", "Saldo insufciente.");
+//                jSONObject.put("code", "422");
+//                response.getWriter().write(jSONObject.toJSONString());
+//            }
+//            else
+//            {
+//                jSONObject = new JSONObject();
+//                jSONObject.put("mensagem", "Lamentamos! Mas, ocorreu um erro ao debitar... Verifique os dados informados na requisição.");
+//                jSONObject.put("code", results[0]);
+//                response.getWriter().write(jSONObject.toJSONString());
+//            }
+//        }
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
